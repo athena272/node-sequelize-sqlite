@@ -18,6 +18,15 @@ npx sequelize-cli model:generate --name Registration --attributes status:string,
 
 npx sequelize-cli db:migrate
 
+npx sequelize-cli seed:generate --name demo-category 
+npx sequelize-cli seed:generate --name demo-course 
+npx sequelize-cli seed:generate --name demo-registration
+
+npx sequelize-cli db:seed --seed 20241108060848-demo-category.js
+npx sequelize-cli db:seed --seed 20241108060855-demo-course.js
+npx sequelize-cli db:seed --seed 20241108060900-demo-registration.js
+
+
 ********************************
 sequelize db:migrate	Executa todas as migrações pendentes para atualizar o banco de dados
 sequelize db:migrate:schema:timestamps:add	Atualiza uma tabela de migração para ter marcação de data/hora
