@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Solange Estudante",
+        "email": "solange@email.com",
+        "cpf": "63058133022",
+        "isActive": true,
+        "role": "estudante",
+        "createdAt": "2024-11-07T06:24:54.724Z",
+        "updatedAt": "2024-11-07T06:24:54.724Z"
+    },
+    {
+        "id": 2,
+        "name": "Igor Estudante",
+        "email": "igor@email.com",
+        "cpf": "99018205028",
+        "isActive": true,
+        "role": "estudante",
+        "createdAt": "2024-11-07T06:24:54.724Z",
+        "updatedAt": "2024-11-07T06:24:54.724Z"
+    },
+    {
+        "id": 3,
+        "name": "Aline Estudante",
+        "email": "aline@email.com",
+        "cpf": "92797497066",
+        "isActive": true,
+        "role": "estudante",
+        "createdAt": "2024-11-07T06:24:54.724Z",
+        "updatedAt": "2024-11-07T06:24:54.724Z"
+    },
+    {
+        "id": 4,
+        "name": "Fernando Estudante",
+        "email": "fernando@email.com",
+        "cpf": "17195730000",
+        "isActive": true,
+        "role": "estudante",
+        "createdAt": "2024-11-07T06:24:54.724Z",
+        "updatedAt": "2024-11-07T06:24:54.724Z"
+    },
+    {
+        "id": 5,
+        "name": "Ricardo Docente",
+        "email": "ricardo@email.com",
+        "cpf": "06946507061",
+        "isActive": true,
+        "role": "docente",
+        "createdAt": "2024-11-07T06:24:54.724Z",
+        "updatedAt": "2024-11-07T06:24:54.724Z"
+    },
+    {
+        "id": 6,
+        "name": "Dine Docente",
+        "email": "dine@email.com",
+        "cpf": "80941142078",
+        "isActive": true,
+        "role": "docente",
+        "createdAt": "2024-11-07T06:24:54.724Z",
+        "updatedAt": "2024-11-07T06:24:54.724Z"
+    }
+]
