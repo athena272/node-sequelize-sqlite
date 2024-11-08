@@ -14,7 +14,9 @@ npx sequelize-cli model:generate --name Category --attributes title:string
 
 npx sequelize-cli model:generate --name Course --attributes title:string,description:string,start_date:dateOnly 
 
-npx sequelize-cli model:generate --name Registration --attributes status:string
+npx sequelize-cli model:generate --name Registration --attributes status:string,
+
+npx sequelize-cli db:migrate
 
 ********************************
 sequelize db:migrate	Executa todas as migrações pendentes para atualizar o banco de dados
