@@ -1,13 +1,17 @@
 const { Router } = require('express')
 const PersonController = require('../controller/PersonController.js')
+const RegistrationController = require('../controller/RegistrationController.js')
 const personController = new PersonController()
+const registrationController = new RegistrationController()
 
-const personRouter = Router()
+const router = Router()
+//Person routes
+router.get('/people', (req, res) => personController.index(req, res))
+router.get('/people/:id', (req, res) => personController.show(req, res))
+router.post('/people', (req, res) => personController.store(req, res))
+router.put('/people/:id', (req, res) => personController.update(req, res))
+router.delete('/people/:id', (req, res) => personController.delete(req, res))
+//Registration routes
+router.post('/people/:studentId/registration', (req, res) => registrationController.store(req, res))
 
-personRouter.get('/people', (req, res) => personController.index(req, res))
-personRouter.get('/people/:id', (req, res) => personController.show(req, res))
-personRouter.post('/people', (req, res) => personController.store(req, res))
-personRouter.put('/people/:id', (req, res) => personController.update(req, res))
-personRouter.delete('/people/:id', (req, res) => personController.delete(req, res))
-
-module.exports = personRouter
+module.exports = router
