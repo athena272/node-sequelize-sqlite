@@ -18,7 +18,7 @@ class PersonController extends Controller {
 
             return res.status(404).json({ "message": `Register not found` })
         } catch (error) {
-            return res.status(500).json({ message: `Error 500 - request failed` })
+            return res.status(500).json({ message: `${error.message} - request failed` })
         }
     }
 }
