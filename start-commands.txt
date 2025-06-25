@@ -1,0 +1,12 @@
+# 1. Instalar as dependências:
+npm install
+
+# 2. Criar o banco e rodar as migrations:
+npx sequelize-cli db:migrate
+
+# 3. Rodar os seeders se houver (confira antes no README ou no z-commands.txt):
+# Exemplo:
+npx sequelize-cli db:seed:all
+
+# 4. Iniciar o servidor:
+node server.js
