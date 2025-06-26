@@ -10,6 +10,10 @@ class Services {
         return await database[this.model].findAll()
     }
 
+    async indexByScope(scope) {
+        return await database[this.model].scope(scope).findAll()
+    }
+
     async show(id) {
         return await database[this.model].findByPk(id)
     }
