@@ -21,6 +21,15 @@ class PersonController extends Controller {
             return res.status(500).json({ message: `${error.message} - request failed` })
         }
     }
+
+    async getAllPeople(req,  res) {
+        try {
+            const peopleList = await personServices.getPeopleAllRecordsScope()
+            return res.status(200).json(peopleList)
+        } catch (error) {
+            return res.status(500).json({ message: `${error.message} - request failed` })
+        }
+    }
 }
 
 // Singleton instance

@@ -7,6 +7,7 @@ const registrationController = new RegistrationController()
 const router = Router()
 //Person routes
 router.get('/people', (req, res) => personController.index(req, res))
+router.get('/people/all', (req, res) => personController.getAllPeople(req, res))
 router.get('/people/:id', (req, res) => personController.show(req, res))
 router.post('/people', (req, res) => personController.store(req, res))
 router.put('/people/:id', (req, res) => personController.update(req, res))

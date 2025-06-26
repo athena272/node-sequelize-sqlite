@@ -10,6 +10,11 @@ class PersonServices extends Services {
         const listRegistrations = await await student.getEnrolledClasses()
         return listRegistrations
     }
+
+    async getPeopleAllRecordsScope() {
+        const peopleList = await super.indexByScope('allRecords')
+        return peopleList
+    }
 }
 
 module.exports = PersonServices
