@@ -1,7 +1,8 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+
+const validateCPF = require('../../utils/validateCPF')
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Person extends Model {
     /**
@@ -21,7 +22,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Person.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [3, 100],
+          msg: 'The name must be between 3 and 100 characters long.'
+        }
+      }
+    },
     email: {
       type: DataTypes.STRING,
       validate: {
@@ -31,7 +40,16 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    cpf: DataTypes.STRING,
+    cpf: {
+      type: DataTypes.STRING,
+      validate: {
+        isValidCPF(value) {
+          if (!validateCPF(value)) {
+            throw new Error('Invalid CPF format');
+          }
+        }
+      }
+    },
     isActive: DataTypes.BOOLEAN,
     role: DataTypes.STRING
   }, {
