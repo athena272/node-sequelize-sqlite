@@ -18,6 +18,10 @@ class Services {
         return await database[this.model].findByPk(id)
     }
 
+    async showWhere(where) {
+        return await database[this.model].findOne({ where: { ...where } })
+    }
+
     async store(registerData) {
         return await database[this.model].create(registerData)
     }
