@@ -22,6 +22,10 @@ class Services {
         return await database[this.model].findOne({ where: { ...where } })
     }
 
+    async showAndCount(where) {
+        return await database[this.model].findAndCountAll({ where: { ...where } })
+    }
+
     async store(registerData) {
         return await database[this.model].create(registerData)
     }
