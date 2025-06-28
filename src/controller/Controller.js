@@ -1,3 +1,5 @@
+const convertStringIdsToNumbers = require('../utils/stringHelperConverter.js');
+
 class Controller {
     constructor(serviceEntity) {
         this.serviceEntity = serviceEntity;
@@ -20,6 +22,24 @@ class Controller {
         try {
             const { id } = req.params
             const registerFound = await this.serviceEntity.show(Number(id))
+            if (registerFound) {
+                return res.status(200).json(registerFound)
+            }
+
+            return res.status(404).json({ "message": `${this.serviceEntity} not found` })
+        } catch (error) {
+            return res.status(500).json({ message: `${error.message} - request failed` })
+        }
+    }
+
+    async showWhere(req, res) {
+        try {
+            const { ...params } = req.params
+            // console.log("🚀 ~ Controller ~ showWhere ~ params:", params)
+            const where = convertStringIdsToNumbers(params)
+            // console.log("🚀 ~ Controller ~ showWhere ~ where:", where)
+            
+            const registerFound = await this.serviceEntity.showWhere(where)
             if (registerFound) {
                 return res.status(200).json(registerFound)
             }
