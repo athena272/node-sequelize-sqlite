@@ -38,7 +38,7 @@ class Controller {
             // console.log("🚀 ~ Controller ~ showWhere ~ params:", params)
             const where = convertStringIdsToNumbers(params)
             // console.log("🚀 ~ Controller ~ showWhere ~ where:", where)
-            
+
             const registerFound = await this.serviceEntity.showWhere(where)
             if (registerFound) {
                 return res.status(200).json(registerFound)
@@ -62,11 +62,13 @@ class Controller {
 
     async update(req, res) {
         try {
-            const { id } = req.params
+            const { ...params } = req.params
+            const where = convertStringIdsToNumbers(params)
             const bodyData = req.body
+
             const isUpdate = await this.serviceEntity.update({
-                id,
                 newData: bodyData,
+                where
             })
             if (isUpdate) {
                 return res.status(201).json({ message: "Updated register successfully", id: `Line id: ${id}`, isUpdate })
@@ -80,8 +82,10 @@ class Controller {
 
     async delete(req, res) {
         try {
-            const { id } = req.params
-            const registerFound = await this.serviceEntity.delete(Number(id))
+            const { ...params } = req.params
+            const where = convertStringIdsToNumbers(params)
+
+            const registerFound = await this.serviceEntity.delete(where)
             if (registerFound) {
                 return res.status(201).json({ message: "Deleted register successfully", registerFound })
             }
