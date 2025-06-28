@@ -10,8 +10,8 @@ class PersonController extends Controller {
 
     async getActiveRegistrations(req, res) {
         try {
-            const { studentId } = req.params
-            const listRegistrations = await personServices.getActiveRegistrationsByStudent(Number(studentId))
+            const { student_id } = req.params
+            const listRegistrations = await personServices.getActiveRegistrationsByStudent(Number(student_id))
             if (listRegistrations) {
                 return res.status(200).json(listRegistrations)
             }
@@ -24,8 +24,8 @@ class PersonController extends Controller {
 
     async getRegistrations(req, res) {
         try {
-            const { studentId } = req.params
-            const listRegistrations = await personServices.getRegistrationsByStudent(Number(studentId))
+            const { student_id } = req.params
+            const listRegistrations = await personServices.getRegistrationsByStudent(Number(student_id))
             if (listRegistrations) {
                 return res.status(200).json(listRegistrations)
             }
