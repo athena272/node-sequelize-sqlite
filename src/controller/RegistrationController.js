@@ -27,14 +27,15 @@ class RegistrationController extends Controller {
 
     async getRegistrationsByStudent(req, res) {
         try {
-            const { ...params } = req.params
-            // console.log("🚀 ~ Controller ~ showWhere ~ params:", params)
-            const where = convertStringIdsToNumbers(params)
-            // console.log("🚀 ~ Controller ~ showWhere ~ where:", where)
+            const { student_id } = req.params
 
-            const registerFound = await this.serviceEntity.showWhere(where)
-            if (registerFound) {
-                return res.status(200).json(registerFound)
+            const registrationByStudent = await registrationServices.showAndCount({
+                student_id: Number(student_id),
+                status: 'matriculado'
+            })
+
+            if (registrationByStudent) {
+                return res.status(200).json(registrationByStudent)
             }
 
             return res.status(404).json({ "message": `${this.serviceEntity} not found` })
