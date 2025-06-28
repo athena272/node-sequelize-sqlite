@@ -8,10 +8,10 @@ class PersonController extends Controller {
         super(personServices)
     }
 
-    async getRegistrations(req, res) {
+    async getActiveRegistrations(req, res) {
         try {
-            const { studentId } = req.params
-            const listRegistrations = await personServices.getRegistrationsByStudent(Number(studentId))
+            const { student_id } = req.params
+            const listRegistrations = await personServices.getActiveRegistrationsByStudent(Number(student_id))
             if (listRegistrations) {
                 return res.status(200).json(listRegistrations)
             }
@@ -22,7 +22,21 @@ class PersonController extends Controller {
         }
     }
 
-    async getAllPeople(req,  res) {
+    async getRegistrations(req, res) {
+        try {
+            const { student_id } = req.params
+            const listRegistrations = await personServices.getRegistrationsByStudent(Number(student_id))
+            if (listRegistrations) {
+                return res.status(200).json(listRegistrations)
+            }
+
+            return res.status(404).json({ "message": `Register not found` })
+        } catch (error) {
+            return res.status(500).json({ message: `${error.message} - request failed` })
+        }
+    }
+
+    async getAllPeople(req, res) {
         try {
             const peopleList = await personServices.getPeopleAllRecordsScope()
             return res.status(200).json(peopleList)

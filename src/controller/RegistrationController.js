@@ -10,12 +10,12 @@ class RegistrationController extends Controller {
 
     async store(req, res) {
         try {
-            const { studentId } = req.params;
+            const { student_id } = req.params;
             const bodyData = req.body;
 
             const registrationData = {
                 ...bodyData,
-                student_id: Number(studentId)
+                student_id: Number(student_id)
             };
 
             const newRegistration = await this.serviceEntity.store(registrationData);

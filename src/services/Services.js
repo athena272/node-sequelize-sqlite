@@ -18,13 +18,17 @@ class Services {
         return await database[this.model].findByPk(id)
     }
 
+    async showWhere(where) {
+        return await database[this.model].findOne({ where: { ...where } })
+    }
+
     async store(registerData) {
         return await database[this.model].create(registerData)
     }
 
-    async update({ newData, id }) {
+    async update({ newData, where }) {
         const listRegisters = await database[this.model].update(newData, {
-            where: { id: id },
+            where: { ...where },
         })
         if (listRegisters[0] === 0) {
             return false
@@ -33,8 +37,8 @@ class Services {
         return true
     }
 
-    async delete(id) {
-        return await database[this.model].destroy({ where: { id: id } })
+    async delete(where) {
+        return await database[this.model].destroy({ where: { ...where} })
     }
 }
 
