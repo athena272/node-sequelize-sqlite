@@ -24,6 +24,25 @@ class RegistrationController extends Controller {
             return res.status(500).json({ message: `${error.message} - request failed` });
         }
     }
+
+    async getRegistrationsByStudent(req, res) {
+        try {
+            const { student_id } = req.params
+
+            const registrationByStudent = await registrationServices.showAndCount({
+                student_id: Number(student_id),
+                status: 'matriculado'
+            })
+
+            if (registrationByStudent) {
+                return res.status(200).json(registrationByStudent)
+            }
+
+            return res.status(404).json({ "message": `${this.serviceEntity} not found` })
+        } catch (error) {
+            return res.status(500).json({ message: `${error.message} - request failed` })
+        }
+    }
 }
 
 // Singleton instance

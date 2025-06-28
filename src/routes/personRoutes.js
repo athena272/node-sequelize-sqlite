@@ -15,6 +15,7 @@ router.delete('/people/:id', (req, res) => personController.delete(req, res))
 //Registration routes
 router.get('/people/:student_id/registration', (req, res) => personController.getActiveRegistrations(req, res))
 router.get('/people/:student_id/registration/all', (req, res) => personController.getRegistrations(req, res))
+router.get('/people/:student_id/registration/confirmed', (req, res) => registrationController.getRegistrationsByStudent(req, res))
 router.get('/people/:student_id/registration/:id', (req, res) => registrationController.showWhere(req, res))
 router.post('/people/:student_id/registration', (req, res) => registrationController.store(req, res))
 router.put('/people/:student_id/registration/:id', (req, res) => registrationController.update(req, res))
