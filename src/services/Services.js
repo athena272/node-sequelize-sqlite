@@ -6,8 +6,8 @@ class Services {
     }
 
     // List all registers
-    async index() {
-        return await database[this.model].findAll()
+    async index(where = {}) {
+        return await database[this.model].findAll({ where: { ...where } })
     }
 
     async indexByScope(scope) {
@@ -38,7 +38,7 @@ class Services {
     }
 
     async delete(where) {
-        return await database[this.model].destroy({ where: { ...where} })
+        return await database[this.model].destroy({ where: { ...where } })
     }
 }
 
