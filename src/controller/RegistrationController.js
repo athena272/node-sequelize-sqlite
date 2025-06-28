@@ -37,6 +37,22 @@ class RegistrationController extends Controller {
             if (registrationByStudent) {
                 return res.status(200).json(registrationByStudent)
             }
+            return res.status(404).json({ "message": `${this.serviceEntity} not found` })
+        } catch (error) {
+            return res.status(500).json({ message: `${error.message} - request failed` })
+        }
+    }
+
+    async getCrowdedCourses(req, res) {
+        try {
+            const courseCapacity = 2
+            const crowdedCourses = await registrationServices.showAndCount({
+                status: 'matriculado'
+            })
+
+            if (crowdedCourses) {
+                return res.status(200).json(crowdedCourses)
+            }
 
             return res.status(404).json({ "message": `${this.serviceEntity} not found` })
         } catch (error) {
