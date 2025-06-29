@@ -22,12 +22,8 @@ class Services {
         return await database[this.model].findOne({ where: { ...where } })
     }
 
-    async showAndCount(where) {
-        return await database[this.model].findAndCountAll({ 
-            where: { ...where },
-            // limit: 2,
-            order: [['id', 'DESC']]
-        })
+    async showAndCount(options) {
+        return await database[this.model].findAndCountAll({ ...options })
     }
 
     async store(registerData) {
