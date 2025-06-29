@@ -30,8 +30,12 @@ class RegistrationController extends Controller {
             const { student_id } = req.params
 
             const registrationByStudent = await registrationServices.showAndCount({
-                student_id: Number(student_id),
-                status: 'matriculado'
+                where: {
+                    student_id: Number(student_id),
+                    status: 'matriculado'
+                },
+                // limit: 2,
+                order: [['id', 'DESC']]
             })
 
             if (registrationByStudent) {
@@ -47,13 +51,17 @@ class RegistrationController extends Controller {
         try {
             const courseCapacity = 2
             const crowdedCourses = await registrationServices.showAndCount({
-                status: 'matriculado'
+                where: {
+                    status: 'matriculado'
+                },
+                attributes: ['course_id'],
+                group: ['course_id'],
+                having: Sequelize.literal(`count(course_id) >= ${courseCapacity}`)
             })
 
             if (crowdedCourses) {
                 return res.status(200).json(crowdedCourses)
             }
-
             return res.status(404).json({ "message": `${this.serviceEntity} not found` })
         } catch (error) {
             return res.status(500).json({ message: `${error.message} - request failed` })
