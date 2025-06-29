@@ -44,6 +44,17 @@ class PersonController extends Controller {
             return res.status(500).json({ message: `${error.message} - request failed` })
         }
     }
+
+    async cancelStudentRegistration(req, res) {
+        try {
+            const { student_id } = req.params
+            await personServices.cancelRegistration(Number(student_id))
+            
+            return res.status(200).json({ message: `Registrations for student ${student_id} were successfully cancelled.` });
+        } catch (error) {
+            return res.status(500).json({ message: `${error.message} - request failed` })
+        }
+    }
 }
 
 // Singleton instance
