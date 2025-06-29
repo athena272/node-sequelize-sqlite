@@ -1,6 +1,8 @@
 # 📚 API com Node.js, Express, Sequelize e SQLite
 
-Este repositório contém a aplicação desenvolvida durante os cursos da formação **APIs com Node.js e Express** da [Alura](https://www.alura.com.br).
+Este projeto é uma API RESTful desenvolvida com Node.js, Express e Sequelize que simula um sistema de gestão acadêmica. A aplicação permite o gerenciamento completo de entidades como pessoas (alunos e docentes), cursos, categorias e matrículas, com operações de cadastro, atualização, exclusão lógica (soft delete), e recursos adicionais como escopos personalizados, filtros, validações e transações.
+
+A estrutura do projeto foi pensada para aplicar boas práticas de organização com o padrão MVC (Model-View-Controller), oferecendo uma base sólida para quem deseja aprender ou evoluir na construção de APIs com Sequelize e bancos relacionais como SQLite.
 
 ## 🚀 Tecnologias Utilizadas
 
