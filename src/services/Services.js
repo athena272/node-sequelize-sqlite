@@ -30,9 +30,10 @@ class Services {
         return await database[this.model].create(registerData)
     }
 
-    async update({ newData, where }) {
+    async update(newData, where, transaction = {}) {
         const listRegisters = await database[this.model].update(newData, {
             where: { ...where },
+            transaction: transaction
         })
         if (listRegisters[0] === 0) {
             return false
