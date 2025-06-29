@@ -1,5 +1,6 @@
 const Controller = require('./Controller.js')
-const RegistrationServices = require('../services/RegistrationServices.js')
+const RegistrationServices = require('../services/RegistrationServices.js');
+const { Sequelize } = require('sequelize');
 
 const registrationServices = new RegistrationServices()
 
@@ -56,7 +57,7 @@ class RegistrationController extends Controller {
                 },
                 attributes: ['course_id'],
                 group: ['course_id'],
-                having: Sequelize.literal(`count(course_id) >= ${courseCapacity}`)
+                having:  Sequelize.literal(`count(course_id) >= ${courseCapacity}`)
             })
 
             if (crowdedCourses) {
